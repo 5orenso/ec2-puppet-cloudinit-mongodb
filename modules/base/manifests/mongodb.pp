@@ -6,7 +6,7 @@ class base::mongodb {
   }
 
   # define the service to restart
-  service { "mongod":
+  service { "mongodb":
     ensure  => "running",
     enable  => "true",
     require => Package["mongodb-server"],
