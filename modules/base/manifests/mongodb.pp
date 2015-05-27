@@ -1,6 +1,20 @@
 class base::mongodb {
   notice('Mongodb beeing installed.')
 
+  file { "directory_srv" :
+    name   => "/srv/",
+    ensure => "directory",
+    owner  => "root",
+    group  => "www-data",
+    mode   => 750,
+  } ->
+
+  exec { "download_configs":
+    command => "git clone ${::gitconfigrepo} /srv/config/",
+    path    => "/usr/local/bin/:/usr/bin/:/bin/",
+    cwd     => "/srv/",
+  } ->
+
   package { 'mongodb-server' :
     ensure => installed,
   } ->
