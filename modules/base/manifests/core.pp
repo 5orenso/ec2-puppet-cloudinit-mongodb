@@ -25,6 +25,8 @@ class base::core {
     package { 'zip' :
         ensure => installed
     }
-
+    package { 's3cmd' :
+        ensure => installed
+    }
 
 }
