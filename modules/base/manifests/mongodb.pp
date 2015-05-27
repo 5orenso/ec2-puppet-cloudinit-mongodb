@@ -28,6 +28,16 @@ class base::mongodb {
     mode  => 644,
     source => "/srv/config/${::etc_config}/mongodb.conf",
     require => Package["mongodb-server"],
+  } ->
+
+  file { "mongodb_cron":
+    name => "/etc/cron.daily/mongodb",
+    ensure => file,
+    owner => root,
+    group => root,
+    mode  => 644,
+    source => "/srv/config/${::etc_config}/cron.daily/mongodb",
+    require => Package["mongodb-server"],
   }
 
   # define the service to restart
