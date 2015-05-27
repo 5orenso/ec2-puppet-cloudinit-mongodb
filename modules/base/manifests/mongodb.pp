@@ -1,7 +1,7 @@
 class base::mongodb {
   notice('Mongodb beeing installed.')
 
-  package { 'mongodb-org' :
+  package { 'mongodb-server' :
     ensure => installed,
   }
 
@@ -9,7 +9,7 @@ class base::mongodb {
   service { "mongod":
     ensure  => "running",
     enable  => "true",
-    require => Package["mongodb-org"],
+    require => Package["mongodb-server"],
   }
 
 }
